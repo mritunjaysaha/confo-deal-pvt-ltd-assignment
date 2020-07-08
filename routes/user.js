@@ -74,4 +74,65 @@ router.post(
         });
     }
 );
+
+router.post(
+    "/login",
+    [check("username").isEmail(), check("password").isLength({ min: 1 })],
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                message: { msgBody: "Username or password is wrong" },
+                msgError: true,
+            });
+        }
+
+        const { username } = req.body;
+
+        User.findOne({ username }, (error, user) => {
+            if (error || !user) {
+                return res.status(400).json({
+                    message: { msgBody: "User doesn't exists" },
+                    msgError: true,
+                });
+            }
+
+            const { _id } = user._id;
+            const { username } = req.body;
+            const token = signToken(_id);
+
+            console.log("sign token: " + token);
+            res.cookie("access_token", token, {
+                httpsOnly: true,
+                sameSite: true,
+            });
+            res.json({
+                isAuthenticated: true,
+                user: username,
+            });
+        });
+    }
+);
+
+router.get(
+    "/logout",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        res.clearCookie("access_token");
+        res.json({ user: { username: "" }, success: true });
+    }
+);
+
+router.get(
+    "/authenticated",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        const { username, _id } = req.user;
+        res.status(200).json({
+            isAuthenticated: true,
+            user: username,
+            id: _id,
+        });
+    }
+);
 module.exports = router;
