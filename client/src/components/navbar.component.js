@@ -8,7 +8,8 @@ const Navbar = () => {
     const { isAuthenticated, setIsAuthenticated, setUser } = useContext(
         AuthContext
     );
-
+    const usertype = localStorage.getItem("usertype");
+    console.log(usertype);
     const history = useHistory();
     if (isAuthenticated) {
         history.push("/dashboard");
@@ -40,6 +41,7 @@ const Navbar = () => {
                 <button type="button" onClick={onClickLogoutHandler}>
                     <Link to="/">Logout</Link>
                 </button>
+                {usertype === "normal" ? <p>Normal</p> : <p>Admin</p>}
             </>
         );
     }

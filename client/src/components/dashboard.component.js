@@ -9,6 +9,7 @@ export default function Dashboard() {
         console.log("use effect");
         AuthService.getUsertype(username)
             .then((data) => {
+                localStorage.setItem("usertype", data);
                 setUsertype(data);
             })
             .catch((err) => console.log(err.message));

@@ -162,8 +162,23 @@ router.get("/usertype/:username", async (req, res) => {
                 console.log(data);
                 res.status(200).json({ usertype: data });
             })
-            .catch((err) => res.json(err.message));
+            .catch((err) => res.status(400).json(err.message));
     });
 });
 
+router.get("/lastlogin/:username", async (req, res) => {
+    console.log("lastlogin:", req.params.username);
+    User.findOne({ username: req.params.username }).then((data) => {
+        const findLastLogin = async () => {
+            return await data.lastLogin;
+        };
+
+        findLastLogin()
+            .then((data) => {
+                console.log("Login: ", data);
+                res.status(200).json({ lastlogin: data });
+            })
+            .catch((err) => res.status(400).json(err.message));
+    });
+});
 module.exports = router;
