@@ -110,21 +110,39 @@ router.post(
     }
 );
 
-router
-    .route("/logout")
-    .get(passport.authenticate("jwt", { session: false }), (req, res) => {
+router.get(
+    "/logout",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
         res.clearCookie("access_token");
         res.json({ user: { username: "" }, success: true });
-    });
+    }
+);
 
-router
-    .route("/authenticated")
-    .get(passport.authenticate("jwt", { session: false }), (req, res) => {
+router.get(
+    "/authenticated",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
         const { username, _id } = req.user;
         res.status(200).json({
             isAuthenticated: true,
             user: username,
             id: _id,
         });
+    }
+);
+
+router.get("/usertype/:username", (req, res) => {
+    console.log(req.params.username);
+    User.findOne({ username: req.params.username }).then((data) => {
+        const { usertype } = data.usertype;
+
+        if (usertype) {
+            res.status(200).json({
+                usertype: data.usertype,
+            });
+        }
     });
+});
+
 module.exports = router;

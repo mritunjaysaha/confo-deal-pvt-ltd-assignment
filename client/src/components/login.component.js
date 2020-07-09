@@ -19,6 +19,7 @@ const Login = (props) => {
             console.log("data: ", data);
             const { isAuthenticated, user, message } = data;
             if (isAuthenticated) {
+                localStorage.setItem("username", user);
                 authContext.setUser(user);
                 authContext.setIsAuthenticated(isAuthenticated);
                 // props.history.push("/dashboard");
