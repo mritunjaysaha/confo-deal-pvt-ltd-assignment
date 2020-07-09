@@ -57,4 +57,14 @@ export default {
             });
         });
     },
+
+    getLastLogin: (username) => {
+        console.log(username);
+        return fetch(`/user/lastlogin/${username}`).then((res) => {
+            return res.json().then((data) => {
+                console.log(data.lastlogin);
+                return data.lastlogin;
+            });
+        });
+    },
 };
