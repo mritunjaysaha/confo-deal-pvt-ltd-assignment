@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -7,16 +8,13 @@ const userSchema = new Schema({
         type: String,
         required: true,
         min: 6,
+        max: 15,
     },
     password: {
         type: String,
-        min: 8,
         required: true,
     },
-    usertype: {
-        type: String,
-        required: true,
-    },
+    devices: [{ type: Schema.Types.ObjectId, ref: "Device" }],
 });
 
 userSchema.pre("save", function (next) {
@@ -46,4 +44,5 @@ userSchema.methods.comparePassword = function (password, callback) {
 };
 
 const User = mongoose.model("User", userSchema);
+
 module.exports = User;

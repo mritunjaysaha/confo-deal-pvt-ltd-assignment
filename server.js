@@ -1,10 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-
-const path = require("path");
 const app = express();
 const port = process.env.PORT || 8000;
+const path = require("path");
 
 require("dotenv").config();
 app.use(cookieParser());
@@ -24,13 +23,12 @@ connection.once("open", () => {
     console.log("MongoDB database connection established successfully");
 });
 
-const userRouter = require("./routes/user");
-app.use("/user", userRouter);
+const usersRouter = require("./routes/user");
+app.use("/user", usersRouter);
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
-
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });

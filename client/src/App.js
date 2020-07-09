@@ -1,11 +1,14 @@
 import React from "react";
-import LandingPage from "./components/landing-page";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Dashboard from "./components/dashboard.component";
+import Navbar from "./components/navbar.component";
+
 function App() {
     return (
-        <div className="App">
-            <h3>Hello, World!</h3>
-            <LandingPage />
-        </div>
+        <Router>
+            <Navbar />
+            <Route path="/dashboard" component={Dashboard} />
+        </Router>
     );
 }
 

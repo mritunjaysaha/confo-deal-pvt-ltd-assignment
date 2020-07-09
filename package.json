@@ -1,30 +1,26 @@
 {
-  "name": "assignment",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mritunjaysaha/confo-deal-pvt-ltd-assignment.git"
+  "engines": {
+    "node": "12.16.1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mritunjaysaha/confo-deal-pvt-ltd-assignment/issues"
-  },
-  "homepage": "https://github.com/mritunjaysaha/confo-deal-pvt-ltd-assignment#readme",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^4.0.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.6.0",
+    "express-validator": "^6.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.22",
+    "mongoose": "^5.9.16",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"

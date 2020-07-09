@@ -1,16 +1,18 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const JwtStrategy = require("passport-jwt").Strategy;
-const User = require("./models/user-model");
+const User = require("./models/user.model");
 
-function cookieExtractor(req) {
+const cookieExtractor = (req) => {
     let token = null;
+
     if (req && req.cookies) {
         token = req.cookies["access_token"];
     }
     return token;
-}
+};
 
+//JwtStrategy is used for authorization
 passport.use(
     new JwtStrategy(
         {
@@ -30,6 +32,7 @@ passport.use(
     )
 );
 
+// LocalStrategy willbe triggered when we sign in to authenticate
 passport.use(
     new LocalStrategy((username, password, done) => {
         User.findOne({ username }, (err, user) => {
