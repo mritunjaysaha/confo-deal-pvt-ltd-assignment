@@ -18,7 +18,7 @@ const Navbar = () => {
             if (data.success) {
                 setUser(data.user);
                 setIsAuthenticated(false);
-                // history.push("/");
+                history.push("/");
             }
         });
     };
@@ -26,7 +26,7 @@ const Navbar = () => {
     function unauthenticatedNavBar() {
         return (
             <>
-                <LandingPage />
+                <Redirect to="/" />
             </>
         );
     }

@@ -21,6 +21,7 @@ const signToken = (userID) => {
 };
 
 const { check, validationResult } = require("express-validator");
+const { db } = require("../models/user.model");
 
 router.post(
     "/signup",
@@ -49,7 +50,11 @@ router.post(
                     },
                 });
             } else {
-                const newUser = new User({ username, password, usertype });
+                const newUser = new User({
+                    username,
+                    password,
+                    usertype,
+                });
 
                 newUser.save((err) => {
                     if (err) {
@@ -93,6 +98,17 @@ router.post(
                     msgError: true,
                 });
             }
+            if (user) {
+                user.lastLogin = Date.now();
+
+                User.update({ _id: user._id }, user, function (err, u) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Updated");
+                    }
+                });
+            }
             const { _id } = user._id;
             const { username } = req.body;
             const token = signToken(_id);
@@ -132,16 +148,21 @@ router.get(
     }
 );
 
-router.get("/usertype/:username", (req, res) => {
+router.get("/usertype/:username", async (req, res) => {
     console.log(req.params.username);
     User.findOne({ username: req.params.username }).then((data) => {
-        const { usertype } = data.usertype;
+        // console.log(data.usertype);
 
-        if (usertype) {
-            res.status(200).json({
-                usertype: data.usertype,
-            });
-        }
+        const findUsertype = async () => {
+            return await data.usertype;
+        };
+
+        const usertype = findUsertype()
+            .then((data) => {
+                console.log(data);
+                res.status(200).json({ usertype: data });
+            })
+            .catch((err) => res.json(err.message));
     });
 });
 

@@ -16,7 +16,12 @@ const userSchema = new Schema({
     },
     usertype: {
         type: String,
+
         required: true,
+    },
+    lastLogin: {
+        type: Date,
+        default: Date.now(),
     },
 });
 
