@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import AuthService from "../services/AuthService";
-// import Message from "../components/message.component";
+import Message from "./mesage.component";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = (props) => {
@@ -52,6 +52,11 @@ const Login = (props) => {
                 />
                 <button>Log in</button>
             </form>
+            {message ? (
+                <Message message={message} />
+            ) : (
+                <p>Message appears here</p>
+            )}
         </>
     );
 };

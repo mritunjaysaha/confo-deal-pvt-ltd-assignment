@@ -9,7 +9,6 @@ const passportConfig = require("../passport");
 const JWT = require("jsonwebtoken");
 
 const User = require("../models/user.model");
-const Device = require("../models/device.model");
 const signToken = (userID) => {
     return JWT.sign(
         {
@@ -34,7 +33,7 @@ router.post(
                 msgError: true,
             });
         }
-        const { username, password } = req.body;
+        const { username, password, usertype } = req.body;
 
         User.findOne({ username }, (err, user) => {
             if (err) {
@@ -50,7 +49,7 @@ router.post(
                     },
                 });
             } else {
-                const newUser = new User({ username, password });
+                const newUser = new User({ username, password, usertype });
 
                 newUser.save((err) => {
                     if (err) {

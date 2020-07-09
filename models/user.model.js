@@ -14,7 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    devices: [{ type: Schema.Types.ObjectId, ref: "Device" }],
+    usertype: {
+        type: String,
+        required: true,
+    },
 });
 
 userSchema.pre("save", function (next) {

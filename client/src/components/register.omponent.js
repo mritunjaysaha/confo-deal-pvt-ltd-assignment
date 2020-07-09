@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import AuthService from "../services/AuthService";
-// import Message from "../components/message.component";
+import Message from "./mesage.component";
 
 const Register = (props) => {
     const [user, setUser] = useState({
@@ -34,7 +34,7 @@ const Register = (props) => {
             setMessage(message);
             if (message.msgError === false) {
                 timerID = setTimeout(() => {
-                    props.history.push("/dashboard");
+                    // props.history.push("/dashboard");
                 }, 2000);
             }
         });
@@ -65,7 +65,11 @@ const Register = (props) => {
                 placeholder="normal / admin"
             />
             <button>Sign Up</button>
-            {/* {message ? <Message message={message} /> : null} */}
+            {message ? (
+                <Message message={message} />
+            ) : (
+                <p>Message appears here</p>
+            )}
         </form>
     );
 };

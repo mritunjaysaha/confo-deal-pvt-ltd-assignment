@@ -37,8 +37,6 @@ const Navbar = () => {
         return (
             <>
                 <Redirect to="/dashboard" />
-                {/* <DashBoard /> */}
-
                 <button type="button" onClick={onClickLogoutHandler}>
                     <Link to="/">Logout</Link>
                 </button>
