@@ -7,7 +7,7 @@ export default function CourseDetails(props) {
             <p>{props.name}</p>
             <p>{props.points}</p>
             <p>
-                {props.dateDescription}: {moment(props.date).format("LL")}
+                {props.dateDescription}: {props.date}
             </p>
         </>
     );

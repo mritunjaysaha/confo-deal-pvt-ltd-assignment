@@ -9,8 +9,8 @@ export default function NormalDashboard() {
             completed: true,
             attempted: false,
             todo: false,
-            dateOfCompletion: Date.now(),
-            dueDate: new Date("July 20"),
+            dueDate: new Date(Date.UTC(2020, 6, 20)),
+            dateOfCompletion: new Date(Date.UTC(2020, 6, 10)),
         },
         {
             name: "Dummy Completed 1",
@@ -18,8 +18,8 @@ export default function NormalDashboard() {
             completed: true,
             attempted: false,
             todo: false,
-            dueDate: new Date("July 20"),
-            dateOfCompletion: Date.now(),
+            dueDate: new Date(Date.UTC(2020, 6, 20)),
+            dateOfCompletion: new Date(Date.UTC(2020, 6, 10)),
         },
         {
             name: "Dummy Attempted",
@@ -28,7 +28,7 @@ export default function NormalDashboard() {
             attempted: true,
             todo: false,
             dueDate: new Date(Date.UTC(2020, 7, 20)),
-            dateOfCompletion: Date.now(),
+            dateOfCompletion: "",
         },
         {
             name: "Dummy Attempted 1",
@@ -36,8 +36,8 @@ export default function NormalDashboard() {
             completed: false,
             attempted: true,
             todo: false,
-            dueDate: new Date("July 20"),
-            dateOfCompletion: Date.now(),
+            dueDate: new Date(Date.UTC(2020, 6, 20)),
+            dateOfCompletion: "",
         },
         {
             name: "Dummy todo",
@@ -45,8 +45,8 @@ export default function NormalDashboard() {
             completed: false,
             attempted: false,
             todo: true,
-            dueDate: new Date("July 20"),
-            dateOfCompletion: Date.now(),
+            dueDate: new Date(Date.UTC(2020, 6, 20)),
+            dateOfCompletion: "",
         },
         {
             name: "Dummy todo1",
@@ -54,8 +54,8 @@ export default function NormalDashboard() {
             completed: false,
             attempted: false,
             todo: true,
-            dueDate: new Date("July 20"),
-            dateOfCompletion: Date.now(),
+            dueDate: new Date(Date.UTC(2020, 6, 20)),
+            dateOfCompletion: "",
         },
     ];
 
@@ -68,7 +68,7 @@ export default function NormalDashboard() {
                         name={course.name}
                         points={course.points}
                         dateDescription={"Completed on"}
-                        date={course.dateOfCompletion}
+                        date={course.dateOfCompletion.toUTCString()}
                     />
                 );
             }
@@ -84,14 +84,30 @@ export default function NormalDashboard() {
                 return (
                     <CourseDetails
                         name={course.name}
-                        // points={course.points}
+                        points={course.points}
                         dateDescription={"Due date"}
-                        // date={new Date(Date.UTC(2020, 7, 20))}
+                        date={course.dueDate.toUTCString()}
                     />
                 );
             }
         });
         return attempted;
+    }
+
+    function TodoCourse() {
+        const todo = courses.map((course) => {
+            if (course.todo === true) {
+                return (
+                    <CourseDetails
+                        name={course.name}
+                        points={course.points}
+                        dateDescription={"Due date"}
+                        date={course.dueDate.toUTCString()}
+                    />
+                );
+            }
+        });
+        return todo;
     }
     return (
         <>
@@ -99,6 +115,7 @@ export default function NormalDashboard() {
             <SimpleTabs
                 completed={CompletedCourses}
                 attempted={AttemptedCourse}
+                todo={TodoCourse}
             />
         </>
     );
