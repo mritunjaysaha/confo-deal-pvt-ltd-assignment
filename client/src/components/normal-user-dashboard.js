@@ -69,12 +69,16 @@ export default function NormalDashboard() {
                         points={course.points}
                         dateDescription={"Completed on"}
                         date={course.dateOfCompletion.toUTCString()}
+                        flag={true}
                     />
                 );
             }
         });
 
-        return completed;
+        if (completed.length > 0) {
+            return completed;
+        }
+        return <CourseDetails message={"No courses completed"} />;
     }
 
     function AttemptedCourse() {
@@ -87,11 +91,15 @@ export default function NormalDashboard() {
                         points={course.points}
                         dateDescription={"Due date"}
                         date={course.dueDate.toUTCString()}
+                        flag={true}
                     />
                 );
             }
         });
-        return attempted;
+        if (attempted.length > 0) {
+            return attempted;
+        }
+        return <CourseDetails message={"No courses in attempted list"} />;
     }
 
     function TodoCourse() {
@@ -103,11 +111,16 @@ export default function NormalDashboard() {
                         points={course.points}
                         dateDescription={"Due date"}
                         date={course.dueDate.toUTCString()}
+                        flag={true}
                     />
                 );
             }
         });
-        return todo;
+
+        if (todo.length > 0) {
+            return todo;
+        }
+        return <CourseDetails message={"No pending courses"} />;
     }
     return (
         <>
