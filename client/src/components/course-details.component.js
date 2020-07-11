@@ -11,6 +11,9 @@ export default function CourseDetails(props) {
                     <p>
                         {props.dateDescription}: {props.date}
                     </p>
+                    <button onClick={() => props.handle(props.name)}>
+                        Attempt
+                    </button>
                 </div>
             ) : null}
         </>
