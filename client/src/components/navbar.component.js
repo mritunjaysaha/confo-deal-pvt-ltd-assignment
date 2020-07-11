@@ -29,14 +29,15 @@ const Navbar = () => {
     if (isAuthenticated) {
         history.push("/dashboard");
     }
-    function onClickLogoutHandler() {
+    const onClickLogoutHandler = () => {
         AuthService.logout().then((data) => {
             if (data.success) {
-                console.log("data", data);
+                setUser(data.user);
                 setIsAuthenticated(false);
+                // history.push("/");
             }
         });
-    }
+    };
 
     function unauthenticatedNavBar() {
         return (
