@@ -132,26 +132,26 @@ export default function NormalDashboard() {
     }
 
     function TodoCourse() {
-        if (courses != null) {
-            const todoData = todo.map((course) => {
-                return (
-                    <CourseDetails
-                        courses={courses}
-                        name={course.name}
-                        points={course.points}
-                        dateDescription={"Due date"}
-                        date={course.dueDate.toUTCString()}
-                        key={Date.now()}
-                        flag={true}
-                        handle={handleTodos}
-                    />
-                );
-            });
-            if (todo.length > 0) {
-                return todoData;
-            }
-            return <CourseDetails message={"No pending courses"} />;
+        const todoData = (
+            <>
+                {todo.map((course) => {
+                    return (
+                        <CourseDetails
+                            name={course.name}
+                            points={course.points}
+                            dateDescription={"Due date"}
+                            date={course.dueDate.toUTCString()}
+                            flag={true}
+                            handle={handleTodos}
+                        />
+                    );
+                })}
+            </>
+        );
+        if (todo.length > 0) {
+            return todoData;
         }
+        return <CourseDetails message={"No pending courses"} />;
     }
 
     function handleTodos(key) {
