@@ -1,5 +1,5 @@
 import React from "react";
-
+import Modal from "./modal.component";
 export default function CourseDetails(props) {
     return (
         <>
@@ -7,12 +7,14 @@ export default function CourseDetails(props) {
             {props.flag === true ? (
                 <div>
                     <p>{props.name}</p>
-                    <p>{props.points}</p>
                     <p>
                         {props.dateDescription}: {props.date.toString()}
                     </p>
                     {props.for === "completed" ? (
-                        <button>Details</button>
+                        <Modal
+                            points={props.points}
+                            dateOfCompletion={props.date.toString()}
+                        />
                     ) : null}
 
                     {props.for === "attempted" ? (

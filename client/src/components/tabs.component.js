@@ -70,12 +70,15 @@ export default function SimpleTabs(props) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
+                <h3>Completed Courses</h3>
                 {props.completed()}
             </TabPanel>
             <TabPanel value={value} index={1}>
+                <h3>On Going Courses</h3>
                 {props.attempted()}
             </TabPanel>
             <TabPanel value={value} index={2}>
+                <h3>Need to Attempt</h3>
                 {props.todo()}
             </TabPanel>
         </div>

@@ -11,10 +11,8 @@ export default function NormalDashboard() {
     const [todo, setTodo] = useState([]);
 
     useEffect(async function () {
-        console.log("here");
         await get("courses").then((data) => {
             if (data != null) {
-                console.log("data", data);
                 setCourses(data);
             }
         });
@@ -24,31 +22,19 @@ export default function NormalDashboard() {
             const c = [];
             const a = [];
             const t = [];
-            console.log(
-                "kjashdhjkahjfahdskhajkshfjsdahshakhskahklahkajksjklajklaj"
-            );
             courses.map((course) => {
-                console.log("here-----", course);
-
                 if (course.status === "completed") {
-                    console.log("completed");
                     c.push(course);
                 }
                 if (course.status === "attempted") {
-                    console.log("attempted");
                     a.push(course);
                 }
                 if (course.status === "todo") {
-                    console.log("todo");
                     t.push(course);
                 }
             });
 
             setTimeout(() => {
-                console.log("c", c);
-                console.log("a", a);
-                console.log("t", t);
-
                 setCompleted(c);
                 setAttempted(a);
                 setTodo(t);
@@ -57,7 +43,6 @@ export default function NormalDashboard() {
         [courses]
     );
     function CompletedCourses() {
-        console.log("courses", courses);
         const completedData = (
             <>
                 {completed.map((course) => {
@@ -82,7 +67,6 @@ export default function NormalDashboard() {
         return <CourseDetails message={"No courses completed"} />;
     }
     function AttemptedCourse() {
-        console.log({ courses });
         const attemptedData = (
             <>
                 {attempted.map((course) => {
@@ -108,9 +92,6 @@ export default function NormalDashboard() {
         return <CourseDetails message={"No courses in attempted list"} />;
     }
     function handleAttempted(key) {
-        console.log("clicked");
-        console.log("key", key);
-        console.log(todo);
         let completedData = completed;
 
         courses.map((course) => {
@@ -122,9 +103,6 @@ export default function NormalDashboard() {
         });
 
         const filteredAttempted = attempted.filter((data) => data.name !== key);
-        console.log("filteredAttempted", filteredAttempted);
-        console.log("completed", completed);
-        console.log("completedData", completedData);
         setCompleted(completedData);
         setAttempted(filteredAttempted);
         set("courses", courses);
@@ -154,10 +132,6 @@ export default function NormalDashboard() {
     }
 
     function handleTodos(key) {
-        console.log("clicked");
-        console.log("key", key);
-        console.log(todo);
-
         let attemptedData = attempted;
         courses.map((course) => {
             if (course.name === key) {
@@ -168,11 +142,7 @@ export default function NormalDashboard() {
 
         set("courses", courses);
         const filteredTodo = todo.filter((data) => data.name !== key);
-        console.log("filteredTodo", filteredTodo);
-        // setAttempted(attemptedData);
-        console.log("attemptedData", attemptedData);
         setAttempted(attemptedData);
-        console.log("attempted", attempted);
         setTodo(filteredTodo);
     }
 
