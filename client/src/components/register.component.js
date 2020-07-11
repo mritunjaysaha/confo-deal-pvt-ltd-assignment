@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import AuthService from "../services/AuthService";
 import Message from "./mesage.component";
-
 const Register = (props) => {
     const [user, setUser] = useState({
         username: "",
@@ -41,36 +40,35 @@ const Register = (props) => {
     };
 
     return (
-        <form onSubmit={onSubmit}>
-            <h2>Sign Up</h2>
-            <input
-                type="text"
-                name="username"
-                value={user.username}
-                onChange={onChange}
-                placeholder="Enter Username"
-            />
-            <input
-                type="password"
-                name="password"
-                value={user.password}
-                onChange={onChange}
-                placeholder="Enter Password"
-            />
-            <input
-                type="text"
-                name="usertype"
-                value={user.usertype}
-                onChange={onChange}
-                placeholder="normal / admin"
-            />
-            <button>Sign Up</button>
-            {message ? (
-                <Message message={message} />
-            ) : (
-                <p>Message appears here</p>
-            )}
-        </form>
+        <div className="form">
+            <h3>Sign Up</h3>
+
+            <form onSubmit={onSubmit}>
+                <input
+                    type="text"
+                    name="username"
+                    value={user.username}
+                    onChange={onChange}
+                    placeholder="Enter Username"
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={user.password}
+                    onChange={onChange}
+                    placeholder="Enter Password"
+                />
+                <input
+                    type="text"
+                    name="usertype"
+                    value={user.usertype}
+                    onChange={onChange}
+                    placeholder="normal / admin"
+                />
+                <button>Sign Up</button>
+                {message ? <Message message={message} /> : null}
+            </form>
+        </div>
     );
 };
 

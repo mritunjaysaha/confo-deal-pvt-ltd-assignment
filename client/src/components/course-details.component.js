@@ -5,9 +5,9 @@ import Button from "@material-ui/core/Button";
 export default function CourseDetails(props) {
     return (
         <>
-            <p>{props.message}</p>
-
             <div className="cards">
+                <p className="cards-empty">{props.message}</p>
+
                 {props.flag === true ? (
                     <div>
                         <p>{props.name}</p>

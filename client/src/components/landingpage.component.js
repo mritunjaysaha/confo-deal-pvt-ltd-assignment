@@ -4,8 +4,12 @@ import Register from "./register.component";
 export default function LandingPage() {
     return (
         <>
-            <Login />
-            <Register />
+            <div className="landing-page">
+                <Login />
+                <hr />
+                <p>Or</p>
+                <Register />
+            </div>
         </>
     );
 }

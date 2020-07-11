@@ -32,9 +32,8 @@ const Navbar = () => {
     function onClickLogoutHandler() {
         AuthService.logout().then((data) => {
             if (data.success) {
-                setUser(data.user);
+                console.log("data", data);
                 setIsAuthenticated(false);
-                history.push("/");
             }
         });
     }

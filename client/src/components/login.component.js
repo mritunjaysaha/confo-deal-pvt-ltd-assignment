@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import AuthService from "../services/AuthService";
 import Message from "./mesage.component";
 import { AuthContext } from "../context/AuthContext";
-
-const Login = (props) => {
+const Login = () => {
     const [user, setUser] = useState({ username: "", password: "" });
     const [message, setMessage] = useState(null);
     const authContext = useContext(AuthContext);
@@ -35,29 +34,27 @@ const Login = (props) => {
     };
     return (
         <>
-            <h3>Login</h3>
-            <form onSubmit={onSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    value={user.username}
-                    onChange={onChange}
-                    placeholder="Enter username"
-                />
-                <input
-                    type="text"
-                    name="password"
-                    value={user.password}
-                    onChange={onChange}
-                    placeholder="Enter password"
-                />
-                <button>Log in</button>
-            </form>
-            {message ? (
-                <Message message={message} />
-            ) : (
-                <p>Message appears here</p>
-            )}
+            <div className="form">
+                <h3>Login</h3>
+                <form onSubmit={onSubmit}>
+                    <input
+                        type="text"
+                        name="username"
+                        value={user.username}
+                        onChange={onChange}
+                        placeholder="Enter username"
+                    />
+                    <input
+                        type="text"
+                        name="password"
+                        value={user.password}
+                        onChange={onChange}
+                        placeholder="Enter password"
+                    />
+                    <button>Log in</button>
+                </form>
+                {message ? <Message message={message} /> : null}
+            </div>
         </>
     );
 };
