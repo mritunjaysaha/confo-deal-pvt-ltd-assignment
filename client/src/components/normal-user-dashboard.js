@@ -9,7 +9,7 @@ export default function NormalDashboard() {
     const [completed, setCompleted] = useState([]);
     const [attempted, setAttempted] = useState([]);
     const [todo, setTodo] = useState([]);
-
+    const [points, setPoints] = useState(0);
     useEffect(async function () {
         await get("courses").then((data) => {
             if (data != null) {
@@ -43,10 +43,12 @@ export default function NormalDashboard() {
         [courses]
     );
     function CompletedCourses() {
+        let completedPoints = 0;
         const completedData = (
             <>
                 {completed.map((course) => {
                     if (course.status === "completed") {
+                        completedPoints += course.points;
                         return (
                             <CourseDetails
                                 for="completed"
@@ -62,6 +64,9 @@ export default function NormalDashboard() {
             </>
         );
         if (completed.length > 0) {
+            console.log("points: ", completedPoints);
+            set("points", completedPoints);
+            setPoints(completedPoints);
             return completedData;
         }
         return <CourseDetails message={"No courses completed"} />;
@@ -98,6 +103,8 @@ export default function NormalDashboard() {
             if (course.name === key) {
                 course.status = "completed";
                 course.dateOfCompletion = Date.now();
+                setPoints(points + course.points);
+                set("points", points);
                 completedData = [...completedData, course];
             }
         });
@@ -150,6 +157,7 @@ export default function NormalDashboard() {
         <>
             <SimpleTabs
                 completed={CompletedCourses}
+                points={points}
                 attempted={AttemptedCourse}
                 todo={TodoCourse}
             />

@@ -7,13 +7,19 @@ function rand() {
 }
 
 function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
+    const top = 40;
+    // const left = 40;
 
     return {
         top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
+        // left: `${left}%`,
+        // transform: `translate(-${top}%, -${left}%)`,
+        // display: "block",
+        position: "relative",
+        display: "flex",
+        "justify-content": "center",
+        "align-item": "center",
+        margin: "0 auto",
     };
 }
 

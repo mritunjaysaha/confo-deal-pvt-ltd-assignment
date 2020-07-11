@@ -10,7 +10,6 @@ const Navbar = () => {
     const [username, setUsername] = useState("");
     const [usertype, setUsertype] = useState("");
     const [lastLogin, setLastLogin] = useState("");
-
     useEffect(function () {
         const username = localStorage.getItem("username");
         const usertype = localStorage.getItem("usertype");
@@ -25,7 +24,7 @@ const Navbar = () => {
                 })
                 .catch((err) => console.log(err.message));
         }
-    });
+    }, []);
     const history = useHistory();
     if (isAuthenticated) {
         history.push("/dashboard");

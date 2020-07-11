@@ -71,8 +71,8 @@ export default function SimpleTabs(props) {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
+                <p className="tab-points">Points:{props.points}</p>
                 <h3 className="tab-header">Completed Courses</h3>
-
                 <div className="cards-container">{props.completed()}</div>
             </TabPanel>
             <TabPanel value={value} index={1}>

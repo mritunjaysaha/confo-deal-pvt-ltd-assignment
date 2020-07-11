@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "./modal.component";
 import Button from "@material-ui/core/Button";
+
 export default function CourseDetails(props) {
     return (
         <>
