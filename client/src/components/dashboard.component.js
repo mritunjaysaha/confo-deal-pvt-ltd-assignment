@@ -5,6 +5,7 @@ import AdminDashboard from "./admin-dashboard";
 export default function Dashboard() {
     const username = localStorage.getItem("username");
     const [usertype, setUsertype] = useState("");
+
     useEffect(function () {
         console.log("use effect");
         AuthService.getUsertype(username)
@@ -21,10 +22,5 @@ export default function Dashboard() {
     } else {
         dashboard = <NormalDashboard />;
     }
-    return (
-        <>
-            <p>dashboard</p>
-            {dashboard}
-        </>
-    );
+    return <>{dashboard}</>;
 }

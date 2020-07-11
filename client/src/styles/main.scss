@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f00;
+    margin: 0;
+}
+
+// Logo
+.logo {
+    position: relative;
+    font-size: 1.5em;
+    padding-left: 1em;
+}
+
+// Navbar
+.navbar {
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 1em;
+    .navbar-contents {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    .navbar-contents-description {
+        position: relative;
+        padding-right: 1em;
+    }
+}
+
+// logout button
+.logout-link {
+    text-decoration: none;
+    text-align: center;
+    color: #ddd;
+}
+
+// Tabs
+.MuiTabs-flexContainer {
+    background-color: #2a2b4c;
+    color: #ddd;
+}
+
+.PrivateTabIndicator-root-2.PrivateTabIndicator-colorSecondary-4.MuiTabs-indicator {
+    background-color: #ddd;
+}
+
+.MuiButton-root {
+    background-color: #2a2b4c !important;
+}
+// cards
+
+.cards {
+    border: 1px solid red;
+    width: 25%;
+    margin: 0 5% 2.5% 0;
+}

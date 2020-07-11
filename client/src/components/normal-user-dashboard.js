@@ -148,7 +148,6 @@ export default function NormalDashboard() {
 
     return (
         <>
-            <p>Normal user</p>
             <SimpleTabs
                 completed={CompletedCourses}
                 attempted={AttemptedCourse}

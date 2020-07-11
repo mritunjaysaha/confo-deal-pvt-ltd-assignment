@@ -2,9 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import AuthService from "../services/AuthService";
 import { AuthContext } from "../context/AuthContext";
-import moment from "moment";
-// import LandingPage from "./landingpage.component";
-// import DashBoard from "./dashboard.component";
+import Button from "@material-ui/core/Button";
 const Navbar = () => {
     const { isAuthenticated, setIsAuthenticated, setUser } = useContext(
         AuthContext
@@ -51,15 +49,17 @@ const Navbar = () => {
     }
 
     function authenticatedNavBar() {
-        console.log(isAuthenticated);
-
         return (
             <>
                 <Redirect to="/dashboard" />
-                <button type="button" onClick={onClickLogoutHandler}>
-                    <Link to="/">Logout</Link>
-                </button>
-                {usertype === "normal" ? <UserDetails /> : null}
+                <div className="navbar-contents">
+                    <Button variant="contained" onClick={onClickLogoutHandler}>
+                        <Link className="logout-link" to="/">
+                            Logout
+                        </Link>
+                    </Button>
+                    {usertype === "normal" ? <UserDetails /> : null}
+                </div>
             </>
         );
     }
@@ -67,20 +67,24 @@ const Navbar = () => {
     function UserDetails() {
         return (
             <>
-                <p>{username}</p>
-                <p>{lastLogin}</p>
+                <div className="navbar-contents-description">
+                    <p>{username}</p>
+                    <p>{lastLogin}</p>
+                </div>
             </>
         );
     }
 
     return (
         <>
-            <h3>BlueTech</h3>
-            <nav>
-                {!isAuthenticated
-                    ? unauthenticatedNavBar()
-                    : authenticatedNavBar()}
-            </nav>
+            <div className="navbar">
+                <h3 className="logo">BlueTech</h3>
+                <nav>
+                    {!isAuthenticated
+                        ? unauthenticatedNavBar()
+                        : authenticatedNavBar()}
+                </nav>
+            </div>
         </>
     );
 };

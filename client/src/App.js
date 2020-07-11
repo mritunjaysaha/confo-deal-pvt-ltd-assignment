@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard.component";
 import Navbar from "./components/navbar.component";
 import LandingPage from "./components/landingpage.component";
-import { set, get } from "idb-keyval";
+import { set } from "idb-keyval";
+import "./styles/main.css";
 function App() {
     useEffect(function () {
+        // Dummy data that is uploaded to IndexedDB everytime we run the command npm start
+        // This data is displayed on the normal user's
         const courses = [
             {
                 name: "Dummy Completed",
