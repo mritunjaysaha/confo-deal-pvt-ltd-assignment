@@ -31,6 +31,6 @@ For the courses I've considered dummy data of the following structure
 
 I've completed the mandatory portion and this is how the normal user's dashboard looks like
 
-![Normal User Dashboard](./normal-user-dashboard.png)
+![Normal User Dashboard](./normal-user-dashboard.gif)
 
 [Portfolio](https://mritunjaysaha.netlify.app)

@@ -45,7 +45,7 @@ const Login = () => {
                         placeholder="Enter username"
                     />
                     <input
-                        type="text"
+                        type="password"
                         name="password"
                         value={user.password}
                         onChange={onChange}
