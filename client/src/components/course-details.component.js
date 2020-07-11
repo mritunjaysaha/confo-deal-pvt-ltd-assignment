@@ -15,7 +15,9 @@ export default function CourseDetails(props) {
                         {props.for === "completed" ? (
                             <Modal
                                 points={props.points}
-                                dateOfCompletion={props.date.toString()}
+                                dateOfCompletion={Date(
+                                    props.date
+                                ).toLocaleString()}
                             />
                         ) : null}
 
@@ -23,7 +25,7 @@ export default function CourseDetails(props) {
                             <>
                                 <p>
                                     {props.dateDescription}:{" "}
-                                    {props.date.toString()}
+                                    {Date(props.date).toLocaleString()}
                                 </p>
                                 <Button
                                     onClick={() =>
@@ -39,7 +41,7 @@ export default function CourseDetails(props) {
                             <>
                                 <p>
                                     {props.dateDescription}:{" "}
-                                    {props.date.toString()}
+                                    {Date(props.date).toLocaleString()}
                                 </p>
                                 <Button
                                     onClick={() => props.clickTodo(props.name)}

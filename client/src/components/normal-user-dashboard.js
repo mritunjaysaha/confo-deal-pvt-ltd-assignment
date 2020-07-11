@@ -82,7 +82,7 @@ export default function NormalDashboard() {
                                 name={course.name}
                                 points={course.points}
                                 dateDescription={"Due date"}
-                                date={course.dueDate.toUTCString()}
+                                date={course.dueDate}
                                 flag={true}
                                 clickAttempt={handleAttempted}
                             />
@@ -124,7 +124,7 @@ export default function NormalDashboard() {
                             name={course.name}
                             points={course.points}
                             dateDescription={"Due date"}
-                            date={course.dueDate.toUTCString()}
+                            date={course.dueDate}
                             flag={true}
                             clickTodo={handleTodos}
                         />

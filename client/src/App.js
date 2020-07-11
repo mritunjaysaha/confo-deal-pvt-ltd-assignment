@@ -18,8 +18,8 @@ function App() {
                 completed: true,
                 attempted: false,
                 todo: false,
-                dueDate: new Date(Date.UTC(2020, 6, 20)),
-                dateOfCompletion: new Date(Date.UTC(2020, 6, 10)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
+                dateOfCompletion: Date.parse("12 July 2020 00:00:00 GMT"),
             },
             {
                 name: "Dummy Completed 1",
@@ -29,8 +29,8 @@ function App() {
                 completed: true,
                 attempted: false,
                 todo: false,
-                dueDate: new Date(Date.UTC(2020, 6, 20)),
-                dateOfCompletion: new Date(Date.UTC(2020, 6, 10)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
+                dateOfCompletion: Date.parse("12 July 2020 00:00:00 GMT"),
             },
             {
                 name: "Dummy Attempted",
@@ -40,7 +40,7 @@ function App() {
                 completed: false,
                 attempted: true,
                 todo: false,
-                dueDate: new Date(Date.UTC(2020, 7, 20)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
                 dateOfCompletion: "",
             },
             {
@@ -51,7 +51,7 @@ function App() {
                 completed: false,
                 attempted: true,
                 todo: false,
-                dueDate: new Date(Date.UTC(2020, 6, 20)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
                 dateOfCompletion: "",
             },
             {
@@ -62,7 +62,7 @@ function App() {
                 completed: false,
                 attempted: false,
                 todo: true,
-                dueDate: new Date(Date.UTC(2020, 6, 20)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
                 dateOfCompletion: "",
             },
             {
@@ -73,7 +73,7 @@ function App() {
                 completed: false,
                 attempted: false,
                 todo: true,
-                dueDate: new Date(Date.UTC(2020, 6, 20)),
+                dueDate: Date.parse("20 July 2020 00:00:00 GMT"),
                 dateOfCompletion: "",
             },
         ];
